@@ -1,0 +1,63 @@
+{% extends 'teacher_nav.html' %}
+
+{% block content %}
+
+
+
+<div class="site">
+    <h3 class="container-fluid text-light font-weight-bold text-center mb-4" style="background-color: #112537;">TEACHER CHAT ROOMS</h3>
+    <div style="position: fixed;">
+    
+        {% if messages %}
+        {% for i in messages %}
+            {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{i}}</strong>
+                    <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+        
+            {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{i}}</strong>
+                    <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+        
+    {% endfor %}
+    {% endif %}
+    </div>
+
+
+            <div class="hero">
+                <!-- <div class="hero-body">
+                    <h1 class="title has-text-centered has-text-white">Rooms</h1>
+                </div> -->
+            </div>
+
+            <!-- <section class="section has-text-white"> -->
+                <div class="jumbotron">
+                    <div class="row">
+                        {% for room in rooms %}
+                        <div class="com-md-3 col-sm-2">
+                            <div class="card">
+                                <!-- <img class="card-img-top" src="{{ room.teacher.profile.url }}" alt="Card image" height="200px"> -->
+                                <div class="card-body">
+                                    <h5 class="subtitle">{{ room.student.first_name }} {{ room.student.last_name }}</h5>
+                                    <a  class="stretched-link" href="{% url 'teach_room' room.slug %}"></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+
+</div>
+<!-- </div> -->
+{% endblock content %}

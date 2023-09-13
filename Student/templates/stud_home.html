@@ -1,0 +1,120 @@
+{% extends 'stud_nav.html' %}
+
+{% block content %}
+
+
+<div class="container-fluid p-0">
+    <div class="site-content">
+<div style="position: fixed;">
+    
+    {% if messages %}
+    {% for i in messages %}
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    
+</div>
+{% endfor %}
+{% endif %}
+
+      <div class="overlay"></div>
+      <div class="d-flex justify-content-center">
+          <div>
+              <div class="d-flex flex-column">
+                  <p class="site-desc">OWN YOUR FUTURE <span class="text-light">BY LEARNING SKILLS</span></p>
+              </div>
+              <div class="d-flex flex-row">
+                <form  action="{% url 'user_home' %}">
+                    {% csrf_token %}
+                    <button class="btn site-btn1 py-3 px-4 mr-4">USER</button>
+                </form>
+
+                <form  action="{% url 's_profile' %}">
+                    {% csrf_token %}
+                    <button class="btn site-btn2 py-3 px-4 mr-4">PROFILE</button>
+                </form>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</header>
+
+
+
+   
+<!-- FOOTER -->
+<footer id="contact" class="text-center text-lg-start text-white"   style="background-color: #112537;" >
+    <div class=" p-4 pb-0 " style="background-color: #112537">
+        <!-- Section: Links -->
+        <section class="">
+          <!--Grid row-->
+            <div class="row">
+            <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-justify">
+                    <h6 class="text-uppercase fw-bold">About Us</h6>
+                    <hr
+                    class="mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 60px; background-color: #F37410; height: 2px"
+                    />
+                    <p>
+                        A learning hub platform serves as an excellent resource for both acquiring new skills and
+                        sharing your expertise with others. It facilitates the process of acquiring new knowledge and
+                        honing your abilities, while also enabling you to impart your skills to a broader audience.
+                    </p>
+                </div>
+
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0"></div>
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0"></div>
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text-justify">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold">Contact</h6>
+                <hr
+                    class="mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 60px; background-color: #F37410; height: 2px"
+                    />
+                <p><i class="fas fa-home mr-3"></i> India, NY 10012, KERALA</p>
+                <p><i class="fas fa-envelope mr-3"></i> ehublearning.2023@gmail.com</p>
+                <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+               
+            </div>
+            <!-- Grid column -->
+
+            </div>
+        </section>
+        <hr class="mb-4 text" style="color:  #F37410;" />
+
+      <!-- Section: CTA -->
+      <section class="">
+        <p class="d-flex justify-content-center align-items-center pl-0">
+          <span class="mr-3">Register for free</span>
+          <a href="{% url 'signup' %}" type="button" class="btn btn-outline-light btn-rounded">
+            Sign up!
+          </a>
+        </p>
+      </section>
+      <!-- Section: CTA -->
+
+      <!-- <hr class="" /> -->
+    </div>
+   </footer>
+
+{% endblock content%}

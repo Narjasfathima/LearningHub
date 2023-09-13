@@ -1,0 +1,60 @@
+{% extends 'man_nav.html' %}
+
+{% block content %}
+<!-- <div class="container-fluid p-0"> -->
+    <div class="site">
+
+        <div style="position: fixed;">
+    
+            {% if messages %}
+            {% for i in messages %}
+                {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{i}}</strong>
+                        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            
+                {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{i}}</strong>
+                        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            
+        {% endfor %}
+        {% endif %}
+        </div>
+        
+        <h3 class="container-fluid text-light font-weight-bold text-center mb-4" style="background-color: #112537;">TEACHERS</h3>
+    {% for i in teacher %}
+        <div class="row jumbotron m-5">
+            <div class="col">
+                <img src="{{i.profile.url}}" alt="img" height="300px" width="60%">
+            </div>
+            <div class="col">
+                <ul class="list-group">
+                    <li class="list-group-item">{{i.first_name}} {{i.last_name}}</li>
+                    <li class="list-group-item"><b>GENDER</b> : {{i.gender}}</li>
+                    <li class="list-group-item"><b>BIRTH DATE</b> : {{i.dob}}</li>
+                    <li class="list-group-item"><b>PHONE NUMBER</b> : {{i.phone}}</li>
+                    <li class="list-group-item"><b>EMAIL</b> : {{i.email}}</li>
+                    <li class="list-group-item"><b>QUALIFICATION</b> : {{i.qualification}}</li>
+                    <li class="list-group-item"><b>DESIGNATION</b> : {{i.designation}}</li>
+                    <li class="list-group-item">
+                        {% if not i.is_suspend  %} 
+                            <a href="{% url 'reject_teach' i.id %}" class="btn btn-warning" onclick=" return confirm('Are you sure?')">SUSPEND</a>
+                        {% endif %}
+                        <a href="{% url 'dlt_teach' i.id  i.user.id %}" class="btn btn-danger" onclick=" return confirm('Are you sure?')">DELETE</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<!-- </div> -->
+{% endblock content %}

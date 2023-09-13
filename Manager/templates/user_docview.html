@@ -1,0 +1,53 @@
+{% extends 'user_nav.html' %}
+{% load static %}
+
+{% block content %}
+<!-- <div class="container-fluid p-0"> -->
+    <div class="site">
+
+        <h3 class="container-fluid text-light font-weight-bold text-center mb-4" style="background-color: #112537;">DOCUMENT</h3>
+        <div style="position: fixed;">
+    
+            {% if messages %}
+            {% for i in messages %}
+                {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{i}}</strong>
+                        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            
+                {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{i}}</strong>
+                        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            
+        {% endfor %}
+        {% endif %}
+        </div>
+
+<div class="row"> 
+{% for i in document %}
+
+        <div class="col-2 mb-4">
+            <div class="card text-center" style="border: 3px solid black; background-color: rgb(194, 232, 232);">
+
+                <div class="text-center mt-3"><img src="{% static 'images/pdf.png'%}"  alt="img" height="auto" width="25%"></div>
+
+                <div class="card-body">                    
+                        <h5 class="card-title">{{ i.title }}<br><span class="small">{{i.datetime}}</span></h5>
+                        <p class="card-text"><a class="stretched-link" href="{{ i.doc.url }}" target="_blank">View Document</a></p>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+</div>
+</div>
+<!-- </div> -->
+{% endblock content %}

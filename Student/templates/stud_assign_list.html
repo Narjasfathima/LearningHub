@@ -1,0 +1,56 @@
+{% extends 'stud_nav2.html' %}
+
+{% block content %}
+    
+
+<div style="position: fixed;">
+    
+    {% if messages %}
+    {% for i in messages %}
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    
+{% endfor %}
+{% endif %}
+</div>
+
+
+<h3 class="container-fluid text-dark font-weight-bold text-center mt-3">ASSIGNMENTS</h3>
+
+{% if assign %}
+
+<div class="row jumbotron text-center ">
+{% for i in assign %}
+
+
+            <div class="col-md-12 col-sm-12">
+                <a href="{% url 'add_ass_file' i.id %}" style="text-decoration: none;">
+                    <ul class="list-group borderless">
+                        <li class="list-group-item border-0 font-weight-bold text-secondary">COURSE: {{i.tutorial.course.course_name}} <br><span class="small">Tutorial: {{i.tutorial.title}}</span></li>
+                        <li class="list-group-item border-0"><b>Topic:</b> {{i.topic}}</li>
+                        <li class="list-group-item border-0 text-info"><b></b> {{i.description}}</li>
+                    </ul>
+                </a>
+            </div>
+        
+        {% endfor %}    
+    </div>
+    {% endif %}
+</div>
+<!-- </div> -->
+{% endblock content %}

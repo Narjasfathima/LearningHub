@@ -1,0 +1,413 @@
+/* IMPORT GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Pacifico&family=Righteous&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+body{
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Lato';
+}
+
+.navbar{
+    box-shadow: 0px 8px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand{
+    font-family: 'Pacifico';
+    font-size: 35px;
+    color: #112537 !important;
+}
+
+.custom-navbar {
+    background-color: whitesmoke; /*Change this to your desired background color */
+    opacity: 1; /* Make it fully opaque */
+    backdrop-filter: blur(10px);
+}
+
+.nav-link{
+    font-size: 18px;
+    margin: 15px;
+    color: black;
+    font-family: 'poppins';
+}
+
+.nav-link:hover{
+    color: white;
+}
+
+.nav-link:hover{
+    color: #F37410 !important;
+}
+
+.active .nav-link{
+    color: #F37410 !important;
+}
+
+.menu-right-btn{
+    font-size: 18px;
+    /* color: black; */
+    color: #F37410;
+    font-family: 'poppins';
+    font-weight: 600;
+    padding: 13px 46px;
+    margin-right: 4%;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 10px;
+    transition: all 300ms ease-in;
+}
+
+.menu-right-btn:hover{
+    color: white;
+    background-color:#F37410 ;
+}
+
+
+.site-stud{
+    /* padding: 100px 0px 0px 0px; */
+}
+
+
+
+/* MAIN */
+
+/* SITE IMAGE  */
+.site-content {
+    padding: 100px 0px;
+    background-image: url('../images/Frame\ 1.png');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.site-desc{
+    /* color: #112537; */
+    color: white;
+    font-family: 'Righteous';
+    /* margin-top: 25%;
+    margin-bottom: 25%; */
+    font-size: 50px;
+}
+
+.d-flex{
+    padding-left: 10%;
+}
+
+.flex-column{
+    margin-top: 170px;
+    width: 75%;
+    /* margin-bottom: 23%; */
+}
+
+.flex-row{
+    margin-top: 2%;
+    margin-bottom: 10%;
+}
+
+.site-btn1{
+    margin-left: 7%;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.site-btn2{
+    background-color: #F37410;
+    color: white;
+}
+
+.site-btn1 .site-btn2{
+    margin-top: 5%;
+    margin-bottom: 40%;
+}
+
+.site-btn1:hover{
+    color: #F37410;
+}
+
+.site-btn2:hover{
+    color: white;
+}
+
+/* SITE IMAGE OVERLAY
+.site-content .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Cover the entire image */
+    /* height: 100%; */
+    /* background-color: rgba(0, 0, 0, 0.3); Semi-transparent black overlay */
+    /* opacity: 0; Initially, the overlay is fully transparent */
+    /* transition: opacity 0.3s ease; Add a smooth transition effect */
+/* } */
+
+/* .site-content:hover .overlay {
+    opacity: 1;
+} */
+
+
+/* SECTION 1 */
+.section-1{
+    margin-top: 5px;
+    /* border-top: 1px solid #ebebeb; */
+    /* box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.5); */
+    font-family: 'poppins';
+}
+
+.section-1 .heading-1{
+    margin-top: 10%;
+}
+
+.section-1 .heading-2{
+    margin-bottom: 5%;
+    font-size: 39px;
+}
+
+.section-1 .para-1{
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 3%;
+}
+
+
+/* GRID */
+
+.section-11{
+    
+    background-image: url('../images/britt-gaiser-hSAlu33padA-unsplash.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    /* border-bottom-left-radius: 150px;
+    border-top-right-radius: 150px; */
+    border-radius: 150px;
+    
+    /* border-radius: 200px; */
+}
+
+.section-11 .main-row{
+    margin: 0;
+}
+
+
+.sub-col-11 {
+    padding: 0;
+}
+
+.sub-col-12{
+    padding: 0;
+}
+
+.event-date{
+    margin-top:13.5%;
+    margin-bottom: 5%;
+    margin-left: 25%;
+    margin-right:5%;
+    background-color: #F37410;
+}
+
+.event-date h4{
+    /* border: 1px solid blue; */
+    font-size: 20px;
+    font-style: 'poppins';
+    font-weight: bold;
+    line-height: 15px;
+    color: white;
+}
+
+@media (max-width: 576px) {
+    .event-date h4 {
+      font-size: 8px; /* Reduce font size for extra small screens */
+        line-height: 8px;
+    }
+  }
+
+.event-date .card-body{
+    padding: 4px;
+    border: 0;
+    margin-left: 10px;
+}
+
+.event-detail{
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0;
+    border: none;
+}
+
+.event-detail .card-body{
+    padding: 0;
+    line-height:.25rem;
+    text-align: center;
+    font-size: .85rem;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    color: #F37410;
+}
+
+@media (max-width: 576px) {
+    .event-detail .card-body h5{
+      font-size:  .55rem; /* Reduce font size for extra small screens */
+        
+    }
+}
+
+@media (max-width: 576px) {
+    .event-detail .card-body p{
+      font-size:  .55rem; /* Reduce font size for extra small screens */
+        
+    }
+}
+
+@media (max-width: 576px) {
+    .event-detail .card-body a{
+      font-size:  .55rem; /* Reduce font size for extra small screens */
+        
+    }
+}
+
+.event-detail a{
+    color: #112537;
+}
+.section-11 .jumbotron{
+    background: rgba(.2, 0, 0, 0.8);
+}
+
+/* SECTION 2 */
+.section-2{
+    margin-top: 5%;
+    border-top: 1px solid #ebebeb;
+    /* box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.5); */
+    font-family: 'poppins';
+}
+
+.section-2 .container-fluid{
+    padding: 0;
+}
+
+.section-2 .outer-row{
+    padding: 0;
+    margin: 0;
+}
+
+
+.section-2 .outer-row img{    
+    border-top-right-radius: 150px;
+}
+
+.section-2 .card{
+    background-color: transparent;
+    border: 0;
+    padding-top:25%;
+    padding-bottom:25%;
+    padding-left: 10%;
+    padding-right: 25%;
+}
+
+.section-2 .card .card-title{
+    line-height: 50px;
+    margin-bottom: 10%;
+    font-size: 39px;
+    font-weight: 600;
+    color: #112537 
+}
+
+.section-2 .card p{
+    line-height: 30px;
+    font-size: 17px;
+    margin-bottom: 10%;
+    font-family: 'poppins';
+    color:dimgray ;
+}
+
+
+.custom-button {
+    display: flex; /* Turn the button into a flex container */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    height: 50px; /* Set the desired height */
+    width: 180px;
+    border-radius: 20px; /* Add rounded corners if desired */
+    background-color: #112537;
+    color: white;
+}
+
+.custom-button:hover{
+    /* color: #F37410 ; */
+    color:white;
+}
+
+.section-2 .sec-col1 .content{
+    font-family: 'poppins';
+}
+
+
+/* SECTION -3 */
+
+.section-3{
+    margin: 0;
+}
+
+.section-3 .card{
+    background-color: transparent;
+    border: 0;
+    padding-top:25%;
+    padding-bottom:25%;
+    padding-left: 25%;
+    padding-right: 10%;
+}
+
+
+
+
+/* section-4 */
+.section-4{
+    padding: 8% 0%;
+    justify-content: center;
+    /* margin-bottom: 10%; */
+    border-top: 1px solid #ebebeb;
+    /* box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.5); */
+    margin-bottom: 0;
+}
+
+/* .section-4 .outer-row .col-1{
+} */
+
+.section-4 .card{
+    border: none;
+    background: transparent;
+}
+
+.section-4 .card-title{
+    font-family:'Righteous' ;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.section-4 .card-img{
+    margin-top:2%;
+    margin-bottom: 2%;
+    
+}
+
+.section-4 .card-img img{
+    /* height: 50%; */
+    width: 80%;
+}
+
+.section-4 .custom-button {
+    height: 30px;
+    margin-top: 5%;
+    margin-bottom: 5px;
+    background-color: #F37410;
+}
+
+.vertical-line {
+    border-left: 1px solid rgb(134, 131, 131); /* You can customize the width and color */
+    height: auto; /* Adjust the height as needed */
+}
+
+/* FOOTER */
+footer{
+    background-color: #112537;
+    height: 40px;
+}

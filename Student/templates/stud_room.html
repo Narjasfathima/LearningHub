@@ -1,0 +1,174 @@
+{% extends 'stud_nav.html' %}
+
+{% block content %}
+<style>
+    /* #chat-messages {
+        display: flex;
+        justify-content: space-between;
+    } */
+
+    .left {
+        text-align: left;
+        flex: 1;
+    }
+
+    .right {
+        text-align: right;
+        flex: 1;
+    }
+</style>
+
+
+<div class="site">
+    <h3 class="container-fluid text-light font-weight-bold text-center mb-4" style="background-color: #112537;">STUDENT CHAT ROOM</h3>
+{% if messages %}
+{% for i in messages %}
+{% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{i}}</strong>
+        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
+
+{% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{i}}</strong>
+    <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+
+<div class="hero">
+    <!-- <div class="hero-body">
+        <h1 class="title has-text-centered has-text-white">{{ room.name }}</h1>
+    </div> -->
+</div>
+
+<section class="section has-text-white">
+    <div class="columns is-multiline">
+        <div class="row">
+
+            <div class="col-md-6 col-sm-12 mx-auto">
+                
+                <div class='bg-dark text-light d-flex align-items-center p-0'>
+                    <img src="{{room.teacher.profile.url}}" alt="" height="100px" width="100px" style="border-radius: 150px;;">
+                    <h5 class="ml-2">{{room.teacher.first_name}} {{room.teacher.last_name}}</h5>
+                </div>
+
+                <div class="jumbotron">
+                    <div class="box messages" id="chat-messages">
+                        
+                        {% for m in messages %}
+                            {% if m.user.id == request.user.id%}
+                                <p class="left"><b class="text-uppercase">{{ m.user.username }}</b>: {{ m.content }}</p>
+                            {% else %}
+                                <p class="right">{{ m.content }}<b class="text-uppercase"> :{{ m.user.username }}</b> </p>
+                            {% endif %}
+                        {% endfor %}
+                        <!-- Messages will be displayed here... -->
+                    </div>
+                </div>
+       
+                <div class="">
+                    <form method="post" action=".">
+                        {% csrf_token %}
+                        <div class="field">
+                            <div class="control">
+                                <!-- {% for m in messages %}<b>{{ m.user.username }}</b>: {{ m.content }}<br>{% endfor %} -->
+                                <input type="text" name="content" id="chat-message-input" class="form-control" placeholder="Your message...">
+                                
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button class="btn btn-success" id="chat-message-submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                          
+            </div>
+            </div>
+        </div>
+
+
+
+</div>
+<!-- </div> -->
+{% endblock content %}
+
+{% block scripts %}
+
+{{ room.slug|json_script:"json-roomname" }}
+{{ request.user.username|json_script:"json-username" }}
+
+<script>
+    const roomName = JSON.parse(document.getElementById('json-roomname').textContent);
+    const userName = JSON.parse(document.getElementById('json-username').textContent);
+
+    const chatSocket = new WebSocket(
+    'ws://'
+    + window.location.host
+    + '/ws/'
+    + roomName
+    + '/'
+);
+
+chatSocket.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+
+    if (data.message) {
+        document.querySelector('#chat-messages').innerHTML += ('<p class="left"><b class="text-uppercase">' + data.username + '</b>: ' + data.message + '</p>');
+    } else {
+        alert('The message was empty!');
+    }
+
+    scrollToBottom();
+};
+
+chatSocket.onclose = function(e) {
+    console.error('The socket closed unexpectedly');
+};
+
+document.querySelector('#chat-message-input').focus();
+document.querySelector('#chat-message-input').onkeyup = function(e) {
+    if (e.keyCode === 13) {
+        document.querySelector('#chat-message-submit').click();
+    }
+};
+
+document.querySelector('#chat-message-submit').onclick = function(e) {
+    e.preventDefault();
+
+    const messageInputDom = document.querySelector('#chat-message-input');
+    const message = messageInputDom.value;
+
+    chatSocket.send(JSON.stringify({
+        'message': message,
+        'username': userName,
+        'room': roomName
+    }));
+
+    messageInputDom.value = '';
+
+    return false;
+};
+
+function scrollToBottom() {
+        let objDiv = document.getElementById("chat-messages");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+
+    // Add this below the function to trigger the scroll on load.
+    scrollToBottom();
+
+</script>
+
+{% endblock scripts %}

@@ -1,0 +1,50 @@
+{% extends 'teach_nav2.html' %}
+
+{% block content %}
+<!-- <div class="container-fluid p-0"> -->
+
+    <div style="position: fixed;">
+    
+        {% if messages %}
+        {% for i in messages %}
+            {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{i}}</strong>
+                    <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+        
+            {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{i}}</strong>
+                    <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+        
+    {% endfor %}
+    {% endif %}
+    </div>
+    
+<!-- <h3 class="container-fluid bg-secondary text-light font-weight-bold text-center">ADD TUTORIAL</h3> -->
+<!-- <div>
+    <p>{{course}}</p>
+</div> -->
+        <div class="row jumbotron  p-4 justify-content-center" style="height: 50%; width: 50%; margin-left: 25%; margin-top: 10%;">
+            
+            <ul class="list-group borderless">
+                <li class="list-group-item border-0 font-weight-bold text-dark"><b>{{course.course_name}}</b> <br>
+                    <span class="small">{{course.course_category}}<br>
+                    <a href="{{ course.syllabus_pdf.url }}" target="_blank">View Syllabus</a></span>
+                </li>
+            
+                </li>
+            </ul>
+        </div>
+        
+</div>
+<!-- </div> -->
+{% endblock content %}

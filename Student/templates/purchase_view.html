@@ -1,0 +1,60 @@
+{% extends 'stud_nav.html' %}
+
+{% block content %}
+<!-- <div class="container-fluid p-0"> -->
+    <div class="site">
+
+        
+        <h3 class="container-fluid text-light font-weight-bold text-center mb-4" style="background-color: #112537;">PURCHASE PAYMENT VIEW</h3>
+        <div style="position: fixed;">
+    
+            {% if messages %}
+            {% for i in messages %}
+                {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{i}}</strong>
+                        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            
+                {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{i}}</strong>
+                        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            
+        {% endfor %}
+        {% endif %}
+        </div>
+<div><a href="{% url 'course_list' %}" class="btn btn-sm btn-primary mt-0 ml-2">CANCEL</a></div>
+        
+    {% if data %}
+        <div class="row jumbotron m-5">
+            <div class="col-md-6 col-sm-6 text-center">
+                <img src="{{data.poster.url}}" alt="Image loading Failed" height="300px" width="50%">
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <ul class="list-group borderless">
+                    <li class="list-group-item border-0 "><h4><span class="font-weight-bold ">{{data.course_name}}</span></h4>
+                        <span class=" text-secondary">
+                            <b>{{data.instructor.first_name}} {{data.instructor.last_name}} ( {{data.instructor.designation}} )</b><br>
+                            {{data.course_category}}<br>
+                            <!-- <span class="material-symbols-outlined " style="font-size: inherit;">currency_rupee</span>{{data.price}}<br> -->
+                            Duration: {{cdate}} to {{edate}}<br>
+                        </span>
+                    </li>
+                    <li class="list-group-item list-group-item-sm">
+                        <a href="{% url 'purchase_pay' data.id %}" class="btn btn-sm btn-warning" onclick=" return confirm('Are you sure?')">CONFIRM PURCHASE</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+</div>
+<!-- </div> -->
+{% endblock content %}

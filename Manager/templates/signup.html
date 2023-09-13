@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% block content %}
+                <h3>Register <span style="font-size:25px;">to </span><strong style="color: #fb771a;font-family: poppins;font-size: 30px;">Lear<span style="color: #112537">ning Hub</span></strong></h3>
+                <p class="mb-4"></p>
+
+
+
+                <div style="position: fixed;">
+    
+                  {% if messages %}
+                  {% for i in messages %}
+                      {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <strong>{{i}}</strong>
+                              <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                      {% endif %}
+                  
+                      {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                          <div class="alert alert-success alert-dismissible fade show" role="alert">
+                              <strong>{{i}}</strong>
+                              <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                      {% endif %}
+                  
+              {% endfor %}
+              {% endif %}
+              </div>
+
+              
+                <form  action="" method="post">
+                    {% csrf_token %}
+                    {{form}}
+                  <div class="mt-5"></div>
+                  
+                  <input type="submit" value="Sign Up" class="btn btn-block btn-primary mb-4">
+                  <div class="d-flex mb-5 mt-3 align-items-center">
+                    <a class="control control--checkbox mb-0" href="{% url 'signin' %}"><span class="caption">Already Registered?<strong style="color: #112537;">SignIn</strong></span>
+                      <!-- <input type="checkbox" checked="checked"/> -->
+                      <div class="control__indicator" style="background-color: #fb771a; height: 23px; width: auto;border-radius: 150px;"><span class="material-symbols-outlined text-center text-dark">account_circle</span></div>
+                    </a>
+                    <!-- <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>  -->
+                  </div>
+    
+                </form>
+{% endblock %}

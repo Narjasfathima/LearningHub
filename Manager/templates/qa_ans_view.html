@@ -1,0 +1,55 @@
+{% extends 'user_nav.html' %}
+
+{% block content %}
+<!-- <div class="container-fluid p-0"> -->
+    <div class="site">
+
+        <div style="position: fixed;">
+    
+            {% if messages %}
+            {% for i in messages %}
+                {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{i}}</strong>
+                        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            
+                {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{i}}</strong>
+                        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            
+        {% endfor %}
+        {% endif %}
+        </div>
+
+        
+<h3 class="container-fluid text-light font-weight-bold text-center mb-4" style="background-color: #112537;">MyQueries Response</h3>
+<div class="ml-2 mt-0"><a href="{% url 'qa_questv' form.teacher.id %}" class="btn btn-dark text-light btn-sm mr-auto" >BACK</a></div>
+    <div class="container">
+        {% if form %}
+        <div class="jumbotron mt-4">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="text-secondary small">{{form.datetime}}</span><br>
+                    <span class="lead"><b class="text-danger ">Question: {{form.question}}</b></span><br>
+                    <span class="lead"><b class="text-success ">Response: </b>{{form.answer}}</span>              
+                </li>
+            </ul>  
+                          
+        </div>
+        {% endif %}
+    </div>
+
+
+
+</div>
+<!-- </div> -->
+{% endblock content %}

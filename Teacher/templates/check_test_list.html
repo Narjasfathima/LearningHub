@@ -1,0 +1,54 @@
+{% extends 'teach_nav3.html' %}
+
+{% block content %}
+    
+<div style="position: fixed;">
+    
+    {% if messages %}
+    {% for i in messages %}
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    
+{% endfor %}
+{% endif %}
+</div>
+
+
+<h3 class="container-fluid text-dark font-weight-bold text-center mt-3">CHECK TEST RESULTS</h3>
+
+{% if test %}
+
+<div class="row jumbotron ">
+{% for i in test %}
+
+
+            <div class="col-md-12 col-sm-12 mt-3">
+               <a href="{% url 'check_testm' i.id %}" style="text-decoration: none;">
+                    <ul class="list-group borderless">
+                        <li class="list-group-item border-0 font-weight-bold text-primary"><h4>{{i.tutorial.course.course_name}} </h4><span class="small">Tutorial: {{i.tutorial.title}}</span></li>
+                        <li class="list-group-item border-0 font-weight-bold text-secondary">{{i.topic}} <br><span class="small">{{i.description}}</span></li>
+                    </ul>
+               </a>
+            </div>
+        
+        {% endfor %}    
+    </div>
+    {% endif %}
+</div>
+<!-- </div> -->
+{% endblock content %}

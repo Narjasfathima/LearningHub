@@ -1,0 +1,60 @@
+{% extends 'teach_nav3.html' %}
+
+{% block content %}
+
+
+<div style="position: fixed;">
+    
+    {% if messages %}
+    {% for i in messages %}
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    
+{% endfor %}
+{% endif %}
+</div>
+
+
+<h3 class="container-fluid text-dark font-weight-bold text-center mt-3">EDIT QUESTIONS</h3>
+
+                <div class="justify-content-center jumbotron p-2 m-6">
+                    <div class="text-center">
+                        <a href="{% url 'edit_test' %}">Edit Associated Test Details</a>
+                    </div>
+                    <form action="" class="form-group " method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <table class="table">
+                        {% for form in forms %}
+                            {{ form.as_table }}
+                        {% endfor %}
+                        </table>
+                        <div class="text-center">
+                            <button class="btn btn-info" onclick=" return confirm('Are you sure?')">Submit</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+{% endblock content%}

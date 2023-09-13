@@ -1,0 +1,73 @@
+{% extends 'stud_nav2.html' %}
+
+{% block content %}
+
+
+
+       
+<div style="position: fixed;">
+    
+    {% if messages %}
+    {% for i in messages %}
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    
+{% endfor %}
+{% endif %}
+</div>
+
+
+<h3 class="container-fluid text-dark font-weight-bold text-center mt-3">ADD ASSIGNMENT</h3>
+
+                <div class="justify-content-center jumbotron p-2 m-6 " style="margin-left: 15%; margin-right: 15%;">
+                    <p><strong class="text-info">Tutorial:</strong> {{ assignment.tutorial.title }}</p>
+                    <p><strong class="text-info">Topic:</strong> {{ assignment.topic }}</p>
+                    <p><strong class="text-info">Guidelines</strong> {{ assignment.description }}</p>
+                    
+                    {% if  ass_file %}
+                            <p><strong class="text-info">STATUS:</strong><span class="text-danger font-weight-bold "> {{ ass_file.status }}</span></p>
+
+                                    
+
+                    {% else %}
+                    <br>
+                       <div class=" p-4" >
+                            <div class="justify-content-center jumbotron p-2 m-6">
+                                <form action="" class="form-group " method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <table class="table">
+                                        {{form.as_table}}
+                                    </table>
+                                    <div class="text-end">
+                                        <button class="btn btn-info">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                       </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+{% endblock content%}

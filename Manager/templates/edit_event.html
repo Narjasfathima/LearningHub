@@ -1,0 +1,47 @@
+{% extends 'man_nav.html' %}
+
+{% block content %}
+<!-- <div class="container-fluid p-0"> -->
+    <div class="site">
+
+        <div style="position: fixed;">
+    
+            {% if messages %}
+            {% for i in messages %}
+                {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{i}}</strong>
+                        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            
+                {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{i}}</strong>
+                        <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            
+        {% endfor %}
+        {% endif %}
+        </div>
+
+        <h3 class="container-fluid text-light font-weight-bold text-center mb-4" style="background-color: #112537;">EDIT EVENT</h3>
+
+        <div class="row jumbotron m-5">
+            <form action="" method="post" enctype="multipart/form-data" class="form-group">
+                {% csrf_token %}
+                {{form.as_table}}
+                <div class="mt-4">
+                    <button class="btn btn-info" onclick=" return confirm('Are you sure?')">Submit</button>
+                </div>
+            </form>
+        </div>
+        
+</div>
+<!-- </div> -->
+{% endblock content %}

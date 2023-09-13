@@ -1,0 +1,49 @@
+{% extends 'teach_nav3.html' %}
+
+{% block content %}
+<!-- <div class="container-fluid p-0"> -->
+
+    <div style="position: fixed;">
+    
+        {% if messages %}
+        {% for i in messages %}
+            {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{i}}</strong>
+                    <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+        
+            {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{i}}</strong>
+                    <button type="button" class="close" style="display: inline;" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+        
+    {% endfor %}
+    {% endif %}
+    </div>
+
+<!-- <h3 class="container-fluid  font-weight-bold text-center mb-4" style="color: #112537;">TUTORIAL</h3>  -->
+    <div class="card p-4 ml-5 mr-5 mb-5">
+        <video class="card-img-top" controls>
+            <source src="{{ tutorial.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="card-body">                    
+                <h5 class="card-title">{{ tutorial.title }}</h5>
+                <p class="card-text small"><span class="text-info font-weight-bold">{{ tutorial.date_time}}</span></p> 
+                <a href="{% url 'edit_tut' %}" class="btn btn-warning btn-sm" >EDIT</a>
+                <a href="{% url 'dlt_tut' tutorial.id %}" class="btn btn-danger btn-sm" onclick=" return confirm('Are you sure?')">DELETE</a>
+        </div>
+    </div> 
+
+    
+</div>
+<!-- </div> -->
+{% endblock content %}
